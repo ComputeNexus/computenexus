@@ -6,22 +6,35 @@ const phrases = [
 
 const typedText = document.getElementById("typed-text");
 
-let currentPhrase = 0;
+let phraseIndex = 0;
+let charIndex = 0;
+let deleting = false;
 
-function rotateText() {
+function animateText() {
     if (!typedText) return;
 
-    typedText.classList.remove("visible");
+    const currentPhrase = phrases[phraseIndex];
 
-    setTimeout(() => {
-        typedText.textContent = phrases[currentPhrase];
-        typedText.classList.add("visible");
+    if (!deleting) {
+        typedText.textContent = currentPhrase.substring(0, charIndex + 1);
+        charIndex++;
 
-        currentPhrase = (currentPhrase + 1) % phrases.length;
-    }, 350);
+        if (charIndex === currentPhrase.length) {
+            deleting = true;
+            setTimeout(animateText, 1600);
+            return;
+        }
+    } else {
+        typedText.textContent = currentPhrase.substring(0, charIndex - 1);
+        charIndex--;
+
+        if (charIndex === 0) {
+            deleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+        }
+    }
+
+    setTimeout(animateText, deleting ? 20 : 38);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    rotateText();
-    setInterval(rotateText, 3600);
-});
+document.addEventListener("DOMContentLoaded", animateText);
