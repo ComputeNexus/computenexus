@@ -2,14 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Compute Nexus</title>
+
+    <link rel="icon" type="image/png" href="assets/favicon-v2.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
 <header>
     <div class="container nav">
-        <img src="assets/logo.svg" class="logo">
+        <img src="assets/logo.svg" alt="Compute Nexus Logo" class="logo">
         <nav>
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
@@ -19,18 +23,30 @@
     </div>
 </header>
 
-<section class="container">
+<section class="container contact-section">
     <h1>Contact Us</h1>
+
+    <p class="cta">We respond within 24 hours.</p>
 
     <form action="https://formspree.io/f/your-id" method="POST">
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
         <input type="text" name="company" placeholder="Company Name">
-        <textarea name="message" placeholder="Tell us about your needs"></textarea>
+        <textarea name="message" placeholder="Tell us about your infrastructure needs"></textarea>
         <button type="submit">Send Message</button>
     </form>
 
-    <p>Or email directly: peter@computenexus.io</p>
+    <h2>Or book a call directly</h2>
+
+    <div
+        class="calendly-inline-widget"
+        data-url="https://calendly.com/peter-computenexus/30min"
+        style="min-width:320px;height:680px;">
+    </div>
+
+    <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+    <p>Or email directly: <a href="mailto:peter@computenexus.io">peter@computenexus.io</a></p>
 </section>
 
 <footer class="footer">
@@ -40,11 +56,7 @@
             <p>Toronto, Canada</p>
             <p>Email: <a href="mailto:peter@computenexus.io">peter@computenexus.io</a></p>
             <p>Phone: <a href="tel:16476188605">647-618-8605</a></p>
-            <p>
-                <a href="https://www.linkedin.com/company/compute-nexus/" target="_blank">
-                    LinkedIn
-                </a>
-            </p>
+            <p><a href="https://www.linkedin.com/company/compute-nexus/" target="_blank">LinkedIn</a></p>
         </div>
     </div>
 </footer>
