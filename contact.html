@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Contact - Compute Nexus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compute Nexus | GPU, Cloud & Colocation Advisory in Canada and the US</title>
 
-    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <meta name="description" content="Toronto-based infrastructure advisory specializing in GPU sourcing, liquid-cooled colocation, cloud services, and AI-ready infrastructure across North America.">
 
-    <!-- Premium font -->
+    <link rel="icon" type="image/png" href="assets/favicon-v2.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -16,56 +16,57 @@
 <header>
     <div class="container nav">
         <img src="assets/logo.svg" alt="Compute Nexus Logo" class="logo">
-        <nav>
+
+        <nav class="main-nav">
             <a href="index.html">Home</a>
             <a href="about.html">About</a>
             <a href="services.html">Services</a>
-            <a href="contact.html" class="btn">Contact</a>
+            <a href="contact.html" class="btn nav-btn active">Contact</a>
         </nav>
     </div>
 </header>
 
-<section class="container contact-section">
-    <h1>Contact Us</h1>
+<section class="page-hero hero-contact">
+    <div class="container fade-in">
+        <h1>Tell Us What Infrastructure You Need</h1>
+        <p>
+            GPU sourcing, cloud capacity, liquid-cooled colocation, or private cloud —
+            we’ll respond within 24 hours.
+        </p>
+    </div>
+</section>
 
-    <p class="cta">We respond within 24 hours.</p>
+<section class="container page-section fade-in">
 
     <form action="https://formspree.io/f/xjglrglv" method="POST">
+        <input type="hidden" name="_next" value="https://computenexus.io/thanks.html">
+
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
         <input type="text" name="company" placeholder="Company Name">
         <textarea name="message" placeholder="Tell us about your infrastructure needs"></textarea>
+
         <button type="submit">Send Message</button>
     </form>
 
-    <h2>Or book a call directly</h2>
+    <h2 style="margin-top:40px;">Or book a call directly</h2>
 
     <div
-        class="calendly-inline-widget"
-        data-url="https://calendly.com/peter-computenexus"
-        style="min-width:320px;height:650px;">
+        class="calendly-inline-widget fade-in"
+        data-url="https://calendly.com/peter-computenexus/30min"
+        style="min-width:320px;height:680px;">
     </div>
 
     <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 
-    <p>Or email directly: <a href="mailto:peter@computenexus.io">peter@computenexus.io</a></p>
 </section>
 
 <footer class="footer">
     <div class="container">
         <p>© 2026 Compute Nexus</p>
-        <div class="footer-info">
-            <p>Toronto, Canada</p>
-            <p>Email: <a href="mailto:peter@computenexus.io">peter@computenexus.io</a></p>
-            <p>Phone: <a href="tel:16476188605">647-618-8605</a></p>
-            <p>
-                <a href="https://www.linkedin.com/company/compute-nexus/" target="_blank">
-                    LinkedIn
-                </a>
-            </p>
-        </div>
     </div>
 </footer>
 
+<script src="js/script.js"></script>
 </body>
 </html>

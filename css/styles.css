@@ -25,10 +25,13 @@ a {
 /* Header */
 header {
     padding: 18px 0;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     position: sticky;
     top: 0;
     z-index: 50;
+    border-bottom: 1px solid rgba(17, 24, 39, 0.04);
 }
 
 .nav {
@@ -52,6 +55,28 @@ header {
 .main-nav a {
     font-size: 15px;
     white-space: nowrap;
+    transition: color 0.22s ease;
+}
+
+/* Active navigation */
+.main-nav a.active {
+    color: #2563EB;
+    font-weight: 600;
+}
+
+.main-nav a.active:not(.btn) {
+    position: relative;
+}
+
+.main-nav a.active:not(.btn)::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background: #2563EB;
+    border-radius: 2px;
 }
 
 /* Buttons */
@@ -62,6 +87,9 @@ header {
     font-size: 14px;
     display: inline-block;
     white-space: nowrap;
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease;
 }
 
 .btn {
@@ -74,8 +102,15 @@ header {
     color: #2563EB;
 }
 
-/* Hero */
+.btn:hover,
+.btn-outline:hover {
+    transform: translateY(-2px);
+}
+
+/* Homepage hero */
 .hero {
+    position: relative;
+    overflow: hidden;
     padding: 90px 0 70px;
     color: white;
     background:
@@ -113,33 +148,165 @@ header {
     gap: 14px;
 }
 
-/* Features */
-.features {
-    padding: 60px 0;
+/* Interior page hero */
+.page-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 70px 0 50px;
+    color: white;
+    background: linear-gradient(135deg, #0f172a 0%, #111827 100%);
 }
 
+.page-hero::before,
+.page-hero::after {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    pointer-events: none;
+}
+
+.page-hero::before {
+    background:
+        radial-gradient(circle at 25% 30%, rgba(37,99,235,0.40), transparent 20%),
+        radial-gradient(circle at 70% 70%, rgba(59,130,246,0.20), transparent 18%);
+    animation: heroFloatOne 18s ease-in-out infinite alternate;
+}
+
+.page-hero::after {
+    background:
+        radial-gradient(circle at 80% 25%, rgba(59,130,246,0.25), transparent 18%),
+        radial-gradient(circle at 40% 80%, rgba(37,99,235,0.18), transparent 16%);
+    animation: heroFloatTwo 22s ease-in-out infinite alternate;
+}
+
+.page-hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.page-hero h1 {
+    font-size: 42px;
+    line-height: 1.18;
+    max-width: 850px;
+}
+
+.page-hero p {
+    font-size: 18px;
+    color: #dbeafe;
+    max-width: 760px;
+    margin-top: 14px;
+}
+
+/* Hero variations */
+.hero-home::before {
+    animation-duration: 18s;
+}
+
+.hero-about::before {
+    opacity: 0.48;
+    animation-duration: 24s;
+}
+
+.hero-about::after {
+    opacity: 0.42;
+    animation-duration: 28s;
+}
+
+.hero-services::before {
+    opacity: 0.62;
+    animation-duration: 16s;
+}
+
+.hero-services::after {
+    opacity: 0.50;
+    animation-duration: 20s;
+}
+
+.hero-contact::before {
+    opacity: 0.44;
+    animation-duration: 26s;
+}
+
+.hero-contact::after {
+    opacity: 0.36;
+    animation-duration: 30s;
+}
+
+/* Hero animation */
+@keyframes heroFloatOne {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    100% {
+        transform: translate3d(-24px, 18px, 0) scale(1.06);
+    }
+}
+
+@keyframes heroFloatTwo {
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    100% {
+        transform: translate3d(22px, -16px, 0) scale(1.04);
+    }
+}
+
+/* Sections */
+.page-section,
+.features {
+    padding: 56px 0;
+}
+
+.page-section p,
+.page-section li {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+.page-section ul {
+    padding-left: 20px;
+}
+
+/* Grid */
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 22px;
 }
 
+/* Cards */
 .card {
     background: white;
     padding: 26px;
     border-radius: 12px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+    border: 1px solid rgba(17, 24, 39, 0.04);
+    transition:
+        transform 0.28s ease,
+        box-shadow 0.28s ease,
+        border-color 0.28s ease;
+    will-change: transform;
+    margin-bottom: 22px;
 }
 
-/* Footer */
-.footer {
-    padding: 36px 0;
-    background: #ffffff;
-    margin-top: 40px;
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.09);
+    border-color: rgba(37, 99, 235, 0.10);
 }
 
-.footer-info p {
-    margin: 4px 0;
+/* Fade in */
+.fade-in {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+        opacity 0.65s ease,
+        transform 0.65s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Forms */
@@ -153,6 +320,12 @@ button {
     border-radius: 8px;
     border: 1px solid #d1d5db;
     font-family: inherit;
+    font-size: 15px;
+}
+
+textarea {
+    min-height: 140px;
+    resize: vertical;
 }
 
 button {
@@ -160,6 +333,18 @@ button {
     color: white;
     border: none;
     cursor: pointer;
+}
+
+/* Footer */
+.footer {
+    padding: 36px 0;
+    background: #ffffff;
+    margin-top: 40px;
+    border-top: 1px solid rgba(17, 24, 39, 0.04);
+}
+
+.footer-info p {
+    margin: 4px 0;
 }
 
 /* Mobile */
@@ -192,20 +377,23 @@ button {
         padding-right: 14px;
     }
 
-    .hero {
-        padding: 60px 0 48px;
+    .hero,
+    .page-hero {
+        padding: 52px 0 42px;
     }
 
-    .hero h1 {
+    .hero h1,
+    .page-hero h1 {
         font-size: 30px;
         line-height: 1.22;
         text-align: center;
     }
 
-    .typing-line {
+    .typing-line,
+    .page-hero p {
         font-size: 16px;
         text-align: center;
-        min-height: 56px;
+        min-height: 54px;
     }
 
     .hero-buttons {
@@ -217,8 +405,18 @@ button {
         grid-template-columns: 1fr;
     }
 
+    .page-section p,
+    .page-section li {
+        font-size: 17px;
+        line-height: 1.65;
+    }
+
     .card {
         padding: 20px;
+    }
+
+    .card:active {
+        transform: translateY(-2px);
     }
 
     .calendly-inline-widget {
